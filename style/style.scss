@@ -1,0 +1,84 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.background {
+    img{
+        width: 100%;
+        height: 300px;
+    }
+
+}
+.card-back {
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    display: flex;
+    justify-content: end;
+    img{
+        min-height: 200px;
+        height: 70%;
+        min-width: 200px;
+        width: 80%;
+    }
+}
+.card-front{
+    position: absolute;
+    top: 152px;
+    right: 15px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: start;
+
+    .card{
+        min-height: 200px;
+        height: 90%;
+        min-width: 200px;
+        width: 80%;
+    }
+
+    .logo-card{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        height: 35px;
+    }
+}
+.texts{
+    display: flex;
+    justify-content:center;
+    margin-top: 100px;
+
+    .box-inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 60%;
+        max-width: 300px;
+        
+        label{
+            margin-bottom: 5px;
+        }
+        input{
+            margin-bottom: 20px;
+        }
+        div{
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+        .block{
+            display: block;
+            input{
+                width: 50px;
+            }
+        }
+        .month-year{
+            justify-content: start;
+            #month{
+                margin-right: 5px;
+            }
+        }
+    }
+}
