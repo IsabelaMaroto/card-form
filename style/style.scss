@@ -1,84 +1,286 @@
-body{
+html {
+    height: 100vh;
+}
+
+body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
-.background {
-    img{
-        width: 100%;
-        height: 300px;
+
+.images {
+    .background {
+        #background-desktop {
+            display: none;
+        }
+
+        #background-phone {
+            width: 100%;
+            height: 300px;
+        }
+
     }
 
-}
-.card-back {
-    position: absolute;
-    top: 40px;
-    right: 15px;
-    display: flex;
-    justify-content: end;
-    img{
-        min-height: 200px;
-        height: 70%;
-        min-width: 200px;
-        width: 80%;
-    }
-}
-.card-front{
-    position: absolute;
-    top: 152px;
-    right: 15px;
-    margin-left: 15px;
-    display: flex;
-    justify-content: start;
-
-    .card{
-        min-height: 200px;
-        height: 90%;
-        min-width: 200px;
-        width: 80%;
-    }
-
-    .logo-card{
+    .card-back {
         position: absolute;
-        top: 20px;
-        left: 20px;
-        height: 35px;
+        top: 40px;
+        right: 15px;
+        display: flex;
+        justify-content: end;
+
+        img {
+            min-height: 200px;
+            height: 70%;
+            min-width: 310px;
+            width: 80%;
+        }
+        #passwordCard{
+            position: absolute;
+            top: 92px;
+            right: 50px;
+            color: hsl(0, 0%, 100%);
+            font-size: 14px;
+            font-weight: lighter;
+            letter-spacing: 1px;
+        }
+    }
+
+    .card-front {
+        position: absolute;
+        top: 152px;
+        right: 15px;
+        margin-left: 15px;
+        display: flex;
+        justify-content: flex-start;
+
+        .card {
+            min-height: 200px;
+            height: 90%;
+            min-width: 310px;
+            width: 80%;
+        }
+
+        .logo-card {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            height: 35px;
+        }
+
+        #numberCard {
+            position: absolute;
+            top: 110px;
+            left: 20px;
+            font-size: 25px;
+            font-weight: normal;
+            color: hsl(0, 0%, 100%);
+            width: fit-content;
+           
+           
+        }
+
+        #nameCard {
+            position: absolute;
+            top: 160px;
+            left: 20px;
+            text-transform: uppercase;
+            color: hsl(0, 0%, 100%);
+            font-size: 12px;
+            font-weight: lighter;
+            letter-spacing: 1px;
+        }
+
+        #dateCard {
+            position: absolute;
+            top: 160px;
+            left: 250px;
+            color: hsl(0, 0%, 100%);
+            font-size: 12px;
+            font-weight: lighter;
+            letter-spacing: 1px;
+        }
+
     }
 }
-.texts{
-    display: flex;
-    justify-content:center;
-    margin-top: 100px;
 
-    .box-inputs{
+.texts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100%;
+
+    .box-inputs {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 60%;
         max-width: 300px;
-        
-        label{
+        margin-top: 100px;
+
+        label {
             margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: hsl(278, 68%, 11%);
         }
-        input{
-            margin-bottom: 20px;
-        }
-        div{
+
+        div {
             display: flex;
             justify-content: space-between;
             align-items: start;
         }
-        .block{
+
+        .block {
             display: block;
-            input{
+
+            input {
                 width: 50px;
             }
         }
-        .month-year{
+
+        .month-year {
             justify-content: start;
-            #month{
+
+            #month {
                 margin-right: 5px;
             }
+        }
+
+        .box-button {
+            button {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                background-color: hsl(278, 68%, 11%);
+                color: hsl(0, 0%, 100%);
+            }
+        }
+    }
+
+    input {
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        color: hsl(278, 68%, 11%);
+        font-weight: normal;
+        border: 1px solid hsl(270, 3%, 87%);
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    input::placeholder {
+        color: hsl(270, 3%, 87%);
+    }
+
+    input:hover,
+    input:active {
+        padding: 0.5rem;
+        border: double 3px transparent;
+        border-radius: 6px;
+        background-image: linear-gradient(white, white),
+            linear-gradient(to right, rgba(100, 72, 254, 1), rgba(96, 5, 148, 1));
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+    }
+
+    input:invalid {
+        outline: 1px solid hsl(0, 100%, 66%);
+    }
+}
+
+//desktop
+
+@media (min-width: 1000px) {
+    body {
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .images {
+        margin-right: 350px;
+        .background {
+            #background-desktop {
+                display: flex;
+                height: 100vh;
+                width: 500px;
+            }
+
+            #background-phone {
+                display: none;
+            }
+
+        }
+
+        .card-back {
+            position: absolute;
+            top: 400px;
+            right: unset;
+            left: 270px;
+
+            img {
+                height: 245px;
+                width: 447px;
+            }
+            #passwordCard{
+                top: 115px;
+            }
+        }
+
+        .card-front {
+            position: absolute;
+            top: 130px;
+            right: unset;
+            left: 150px;
+
+            .card {
+                height: 245px;
+                width: 447px;
+            }
+
+            .logo-card {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                height: 35px;
+            }
+            #numberCard {
+                position: absolute;
+                top: 130px;
+                left: 25px;
+                font-size: 25px;
+                font-weight: normal;
+                color: hsl(0, 0%, 100%);
+                width: fit-content;
+                letter-spacing: 6px;
+               
+            }
+    
+            #nameCard {
+                position: absolute;
+                top: 200px;
+                left: 25px;
+                text-transform: uppercase;
+                color: hsl(0, 0%, 100%);
+                font-size: 12px;
+                font-weight: lighter;
+                letter-spacing: 1px;
+            }
+    
+            #dateCard {
+                position: absolute;
+                top: 200px;
+                left: 380px;
+                color: hsl(0, 0%, 100%);
+                font-size: 12px;
+                font-weight: lighter;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    .texts {
+        .box-inputs {
+            min-width: 300px;
         }
     }
 }
