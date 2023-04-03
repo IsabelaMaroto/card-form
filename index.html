@@ -51,14 +51,18 @@
           placeholder="e.g. Jane Appleseed"
           id="nameInput"
           required
+          pattern="^[a-zA-Z\s]*$"
+          maxlength="30"
         />
         <label for="card-number">Card Number</label>
         <input
-          type="number"
+          type="tel"
           name="card-number"
           placeholder=" e.g. 1234 5678 9123 0000"
           id="numberInput"
           required
+          maxlength="19"
+          pattern="\b\d{4}[ -]?\d{4}[ -]?\d{4}[ -]?\d{4}\b"
         />
         <div>
           <div class="block" name="date">
@@ -87,6 +91,7 @@
                 placeholder="e.g. 123"
                 id="passwordInput"
                 required
+                pattern="^[0-9]{0,4}$"
               />
             </div>
           </div>
