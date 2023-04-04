@@ -23,6 +23,8 @@
     <title>Frontend Mentor | Interactive card details form</title>
   </head>
   <body>
+
+    
     <section class="images">
       <div class="background">
         <img src="/images/bg-main-mobile.png" id="background-phone" />
@@ -42,6 +44,9 @@
         </div>
       </div>
     </section>
+
+
+
     <section class="texts">
       <form class="box-inputs" id="form">
         <label for="name">Cardholder Name</label>
@@ -64,22 +69,27 @@
           maxlength="19"
           pattern="\b\d{4}[ -]?\d{4}[ -]?\d{4}[ -]?\d{4}\b"
         />
-        <div>
+        <p class="error" id="error-number">Wrong format, numbers only</p>
+        <div class="flex-date-cvc">
           <div class="block" name="date">
             <div>
               <label for="date">Exp. Date (MM/YY)</label>
             </div>
-            <div class="month-year">
-              <input
-                type="number"
-                id="monthInput"
-                placeholder="MM"
-                min="01"
-                max="12"
-                required
-              />
-              <input type="number" placeholder="YY" id="yearInput" required/>
+            <div class="box-date">
+              <div class="month-year">
+                <input
+                  type="number"
+                  id="monthInput"
+                  placeholder="MM"
+                  min="01"
+                  max="12"
+                  required
+                />
+                <input type="number" placeholder="YY" id="yearInput" required/>
+              </div>
+              <p class="error" id="error-date">Wrong format, numbers only</p>
             </div>
+            
           </div>
           <div class="block" name="cvc">
             <div>
@@ -91,9 +101,12 @@
                 placeholder="e.g. 123"
                 id="passwordInput"
                 required
-                pattern="^[0-9]{0,4}$"
+                pattern="[0-9]{3}"
+                maxlength="3"
+                minlength="3"
               />
             </div>
+            <p class="error" id="error-cvc">Can't be blank</p>
           </div>
         </div>
         <div class="box-button">
@@ -116,7 +129,7 @@
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
           >Frontend Mentor</a
-        >. Coded by <a href="#">Your Name Here</a>.
+        >. Coded by <a href="https://www.frontendmentor.io/profile/IsabelaMaroto">Isabela Nunes Maroto</a>.
       </div>
     </section>
 

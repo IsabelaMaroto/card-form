@@ -7,138 +7,161 @@ const buttonConfirm = document.getElementById("confirm");
 const buttonContinue = document.getElementById("continue");
 const form = document.getElementById("form");
 const completed = document.getElementById("completed");
-
 const nameCard = document.getElementById("nameCard");
 const numberCard = document.getElementById("numberCard");
 const dateCard = document.getElementById("dateCard");
 const passwordCard = document.getElementById("passwordCard");
+const errorNumber = document.getElementById("error-number");
+const errorDate = document.getElementById("error-date");
+const errorCvc = document.getElementById("error-cvc");
 
 function maskCardNumber(cardNumber) {
-    if (typeof cardNumber === "number") {
-        cardNumber = cardNumber.toString();
+  if (typeof cardNumber === "number") {
+    cardNumber = cardNumber.toString();
 
-        if (cardNumber.length === 19) {
-            
-            return cardNumber.slice(-4).padStart(16, "*").match(/.{4}/g).join(" ");
-        }
-    } else if (typeof cardNumber === "string") {
-        if (cardNumber.length === 19) {
-            return cardNumber.slice(-4).padStart(16, "*").match(/.{4}/g).join(" ");
-        }
+    if (cardNumber.length >= 15) {
+      return cardNumber.slice(-4).padStart(16, "*").match(/.{4}/g).join(" ");
     }
+  } else if (typeof cardNumber === "string") {
+    if (cardNumber.length >= 15) {
+      return cardNumber.slice(-4).padStart(16, "*").match(/.{4}/g).join(" ");
+    }
+  }
 
-    return cardNumber;
+  return cardNumber;
 }
 
-
 function setName() {
-    nameInput.onkeyup = function () {
-        nameCard.innerText = nameInput.value;
+  nameInput.onkeyup = function () {
+    nameCard.innerText = nameInput.value;
 
-        if (nameInput.value == "") {
-            nameCard.innerText = "Jane Appleseed";
-        }
-    };
+    if (nameInput.value == "") {
+      nameCard.innerText = "Jane Appleseed";
+    }
+  };
 }
 
 function setNumber() {
-    number.onkeyup = function (event) {
-        
-        numberCard.innerText = maskCardNumber(number.value)
-    
-        number.value.trim();
+  number.onkeyup = function (event) {
+    numberCard.innerText = maskCardNumber(number.value);
 
-        var key = event.key;
+    number.value.trim();
 
-        if( key == 8 || key == 46 ) {
+    var key = event.key;
 
-        if(number.value.length == 4) {
-            number.value = number.value.slice(0, 4) + " " + number.value.slice(4)
-        } 
-        
-        if(number.value.length == 9) {
-            
-            let test = 
-            number.value.slice(0, 4) + " " + 
-            number.value.slice(5, 9) + " ";
+    if (key != 46) {
+      if (number.value.length == 4) {
+        number.value = number.value.slice(0, 4) + " " + number.value.slice(4);
+      }
 
-            number.value = test;
-        }
+      if (number.value.length == 9) {
+        let test =
+          number.value.slice(0, 4) + " " + number.value.slice(5, 9) + " ";
 
-        if(number.value.length == 14) {
-            
-            let test = 
-            number.value.slice(0, 4) + " " + 
-            number.value.slice(5, 9) + " " +
-            number.value.slice(10, 14) + " ";
+        number.value = test;
+      }
 
-            number.value = test;
-        }
+      if (number.value.length == 14) {
+        let test =
+          number.value.slice(0, 4) +
+          " " +
+          number.value.slice(5, 9) +
+          " " +
+          number.value.slice(10, 14) +
+          " ";
 
-        if(number.value.length == 19) {
-            
-            let test = 
-            number.value.slice(0, 4) + " " + 
-            number.value.slice(5, 9) + " " +
-            number.value.slice(10, 14) + " " +
-            number.value.slice(15, 19);
+        number.value = test;
+      }
 
-            number.value = test;
-        }
+      if (number.value.length == 19) {
+        let test =
+          number.value.slice(0, 4) +
+          " " +
+          number.value.slice(5, 9) +
+          " " +
+          number.value.slice(10, 14) +
+          " " +
+          number.value.slice(15, 19);
+
+        number.value = test;
+      }
     }
 
-        if (number.value == "") {
-            numberCard.innerText = "0000 0000 0000 0000";
-        }
-    };
+    if (number.value == "") {
+      numberCard.innerText = "0000 0000 0000 0000";
+    }
+  };
 }
 
 function setDate() {
-    let newYear = "00";
-    let newMonth = "00";
+  let newYear = "00";
+  let newMonth = "00";
 
-    year.onkeyup = function () {
-        if (year.value == "") {
-            dateCard.innerText = `${newMonth}/00`;
-        } else {
-            newYear = year.value;
-            dateCard.innerText = `${newMonth}/${newYear}`;
-        }
-    };
-    month.onkeyup = function () {
-        if (month.value == "") {
-            dateCard.innerText = `00/${newYear}`;
-        } else {
-            newMonth = month.value;
-            dateCard.innerText = `${newMonth}/${newYear}`;
-        }
-    };
+  year.onkeyup = function () {
+    if (year.value == "") {
+      dateCard.innerText = `${newMonth}/00`;
+    } else {
+      newYear = year.value;
+      dateCard.innerText = `${newMonth}/${newYear}`;
+    }
+  };
+  month.onkeyup = function () {
+    if (month.value == "") {
+      dateCard.innerText = `00/${newYear}`;
+    } else {
+      newMonth = month.value;
+      dateCard.innerText = `${newMonth}/${newYear}`;
+    }
+  };
 }
 
 function setPassword() {
-    password.onkeyup = function () {
-        passwordCard.innerText = password.value;
+  password.onkeyup = function () {
+    passwordCard.innerText = password.value;
 
-        if (password.value == "") {
-            passwordCard.innerText = "000";
-        }
-    };
+    if (password.value == "") {
+      passwordCard.innerText = "000";
+    }
+  };
 }
 
 function Confirm() {
-    completed.style.display = "none";
+  completed.style.display = "none";
+  errorNumber.style.display = "none";
+  errorDate.style.display = "none";
+  errorCvc.style.display = "none";
+  
+  buttonConfirm.onclick = function () {
+    if (password.value == "") {
+      errorCvc.style.display = "flex";
+    } else {
+      errorCvc.style.display = "none";
+    }
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (completed.style.display == "none") {
-            form.style.display = "none";
-            completed.style.display = "flex";
-        }
-    });
+    if (number.value == "") {
+        errorNumber.style.display = "flex";
+    } else {
+      errorNumber.style.display = "none";
+    }
 
-    buttonContinue.onclick = function () {
-        window.location.reload();
-    };
+    if (month.value == "" || year.value == "") {
+      errorDate.style.display = "flex";
+    } else {
+      errorDate.style.display = "none";
+    }
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (completed.style.display == "none") {
+      form.style.display = "none";
+      completed.style.display = "flex";
+    }
+  });
+
+  buttonContinue.onclick = function () {
+    window.location.reload();
+  };
 }
 
 setName();
